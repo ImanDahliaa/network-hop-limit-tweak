@@ -1,0 +1,40 @@
+name: Validate Scripts
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Check if script exists
+      run: |
+        if (!(Test-Path "set-hoplimit.bat")) {
+          Write-Error "set-hoplimit.bat not found!"
+        }
+        if (!(Test-Path "revert-hoplimit.bat")) {
+          Write-Error "revert-hoplimit.bat not found!"
+        }
+
+    - name: Display script content
+      run: |
+        echo "=== set-hoplimit.bat ==="
+        type set-hoplimit.bat
+        echo "=== revert-hoplimit.bat ==="
+        type revert-hoplimit.bat
+
+    - name: Simulate command (no changes)
+      run: |
+        echo "Simulating netsh commands..."
+        echo netsh int ipv4 show global
+        echo netsh int ipv6 show global
+
+    - name: Success message
+      run: echo "Workflow completed successfully!"
