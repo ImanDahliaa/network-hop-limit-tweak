@@ -1,4 +1,10 @@
 # Network Hop Limit (TTL) Tweak for Windows
+# Network Hop Limit (TTL) Tweak for Windows
+
+![License](https://img.shields.io/badge/license-MIT-green)
+![Platform](https://img.shields.io/badge/platform-Windows-blue)
+![Status](https://img.shields.io/badge/status-stable-brightgreen)
+![Maintained](https://img.shields.io/badge/maintained-yes-success)
 
 A simple script to modify the default hop limit (TTL - Time To Live) for IPv4 and IPv6 on Windows systems using `netsh`.
 
